@@ -1,6 +1,33 @@
 # Contenty · Autorizações de Uso de Imagem
 
-MVP v1.0 para criar projetos de gravação, compartilhar links com os participantes, coletar dados e assinaturas manuscritas em dispositivos móveis, preencher o **PDF original entregue pela Igreja** e exportar documentos individuais ou todos os PDFs em um ZIP.
+MVP v2.0 para criar projetos de gravação, compartilhar links com os participantes, coletar dados e assinaturas manuscritas em dispositivos móveis, preencher o **PDF original entregue pela Igreja** e exportar documentos individuais ou todos os PDFs em um ZIP.
+
+## Atualização da V1 para a V2 (leia primeiro)
+
+A V2 atualiza **a interface visual e a responsividade**. O banco de dados e as Edge Functions são os mesmos da V1; se já foram configurados e a assinatura já funcionou, **não rode os SQLs novamente e não faça novo deploy das Edge Functions**.
+
+**Para testar a V2 no Windows:**
+
+1. Faça um backup da pasta da V1, sem apagar o banco nem os registros do Supabase.
+2. Extraia este ZIP em uma nova pasta.
+3. Na pasta extraída, abra o PowerShell e execute `npm.cmd install` e depois `npm.cmd run dev`.
+4. Abra o endereço local apresentado no terminal (normalmente `http://localhost:5173/`).
+5. Faça login, abra um projeto existente e teste o link de assinatura pelo celular. A conexão do Supabase está configurada no `.env.local`.
+6. Se alguma tela mostrar conteúdo antigo, pressione `Ctrl + F5` para atualizar o navegador.
+
+**Não exclua projetos reais para fazer os testes de layout.** O banco conectado é o mesmo ambiente da V1.
+
+### Novidades da V2
+
+- Identidade visual oficial da Contenty: logotipo de imagem fornecido, vermelho `#E60202`, preto e branco.
+- Tipografia alinhada às referências: Poppins nos títulos e Montserrat nos textos.
+- Login com identidade escura/vermelha e marca d'água oficial.
+- Menu administrativo escuro, botões vermelhos, cards e elementos visuais atualizados.
+- Correções de largura e quebra de textos para telas de 320 a 430 px, incluindo confirmação da assinatura, formulários, rodapé, botões e projetos.
+- Ajustes responsivos adicionais no painel do administrador e em modais.
+- Novos arquivos em `public/brand/` e estilos separados em `src/brand-v2.css`.
+
+A V2 não altera os campos do formulário, as regras de menores de idade ou o conteúdo do PDF original da Igreja.
 
 ## 1. O que está nesta versão
 
@@ -16,7 +43,9 @@ MVP v1.0 para criar projetos de gravação, compartilhar links com os participan
 
 ```text
 src/App.jsx                              Telas e fluxos
-src/style.css                            Estilização responsiva
+src/style.css                            Estilização base original
+src/brand-v2.css                        Identidade da Contenty e correções mobile
+public/brand/                           Logotipos e monograma enviados pela Contenty
 src/pdf.js                               Gerador dos PDFs
 src/supabase.js                          Cliente Supabase e funções
 public/modelo-autorizacao.pdf            PDF da Igreja entregue à Contenty
